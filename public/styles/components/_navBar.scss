@@ -1,0 +1,22 @@
+
+.nav-bar{
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid red;
+    // padding-block: 25px;
+
+    nav{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        .nav-content{
+            display: flex;
+            justify-content: space-between;
+
+            .nav-pokeball{
+                transform: translateY(25px);
+            }
+        }
+    }
+}

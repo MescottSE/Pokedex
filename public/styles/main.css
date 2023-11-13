@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+}
+
+.section {
+  margin-block: 50px;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid red;
+}
+.nav-bar nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-bar nav .nav-content {
+  display: flex;
+  justify-content: space-between;
+}
+.nav-bar nav .nav-content .nav-pokeball {
+  transform: translateY(25px);
+}
+
+.poke-menu-component .poke-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #616161;
+  border-radius: 10px;
+  padding: 25px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+.poke-menu-component .poke-block img {
+  opacity: 0.5;
+  transition: ease-in-out 0.25s;
+}
+.poke-menu-component .poke-block img:hover {
+  opacity: 1;
+}
+.poke-menu-component .poke-block .poke-name {
+  color: lightgrey;
+  text-align: center;
+  margin-block: 10px;
+}/*# sourceMappingURL=main.css.map */
