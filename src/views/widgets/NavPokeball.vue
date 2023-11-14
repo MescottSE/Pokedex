@@ -72,7 +72,7 @@
     }
 
     .bottom-ball{
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ffffff);
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 1), #ffffff);
         height: 45%;
         width: 100%;
     }
