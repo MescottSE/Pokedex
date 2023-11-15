@@ -52,4 +52,71 @@ body {
   color: lightgrey;
   text-align: center;
   margin-block: 10px;
+}
+.poke-menu-component .poke-block .pokemon-type-container {
+  display: flex;
+  justify-content: space-around;
+  margin-block: 15px;
+}
+.poke-menu-component .poke-block .pokemon-type-container .type {
+  background-color: white;
+  padding: 5px 15px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+}
+.poke-menu-component .poke-block .pokemon-type-container .type.fire-type {
+  background: linear-gradient(to bottom, #ff8000, #ff0000);
+}
+.poke-menu-component .poke-block .pokemon-type-container .type.water-type {
+  background: linear-gradient(to bottom, #4fc3f7, #0288d1);
+}
+.poke-menu-component .poke-block .pokemon-type-container .type.grass-type {
+  background: linear-gradient(to bottom, #81c784, #43a047);
+}
+.poke-menu-component .poke-block .pokemon-type-container .type.electric-type {
+  background: linear-gradient(to bottom, #ffd54f, #ffb300);
+}
+.poke-menu-component .poke-block .pokemon-type-container .type.psychic-type {
+  background: linear-gradient(to bottom, #9575cd, #5e35b1);
+}
+.poke-menu-component .poke-block .pokemon-type-container .type.fighting-type {
+  background: linear-gradient(to bottom, #d32f2f, #b71c1c);
+}
+.poke-menu-component .poke-block .pokemon-type-container .type.ice-type {
+  background: linear-gradient(to bottom, #4dd0e1, #0097a7);
+}
+.poke-menu-component .poke-block .pokemon-type-container .type.dragon-type {
+  background: linear-gradient(to bottom, #ff8a65, #d84315);
+}
+.poke-menu-component .poke-block .pokemon-type-container .type.dark-type {
+  background: linear-gradient(to bottom, #7986cb, #303f9f);
+}
+.poke-menu-component .poke-block .pokemon-type-container .type.fairy-type {
+  background: linear-gradient(to bottom, #ff80ab, #c2185b);
+}
+.poke-menu-component .poke-block .pokemon-type-container .type.normal-type {
+  color: black;
+  background: linear-gradient(to bottom, #a8a77a, #6d6d4e);
+}
+.poke-menu-component .poke-block .pokemon-type-container .type.rock-type {
+  background: linear-gradient(to bottom, #b8a038, #796315);
+}
+.poke-menu-component .poke-block .pokemon-type-container .type.flying-type {
+  background: linear-gradient(to bottom, #90b1c5, #377e95);
+}
+.poke-menu-component .poke-block .pokemon-type-container .type.poison-type {
+  background: linear-gradient(to bottom, #a33ea1, #5e2252);
+}
+.poke-menu-component .poke-block .pokemon-type-container .type.ground-type {
+  background: linear-gradient(to bottom, #d9bf6f, #997a3e);
+}
+.poke-menu-component .poke-block .pokemon-type-container .type.bug-type {
+  background: linear-gradient(to bottom, #a8b820, #6d7815);
+}
+.poke-menu-component .poke-block .pokemon-type-container .type.ghost-type {
+  background: linear-gradient(to bottom, #705898, #42424a);
+}
+.poke-menu-component .poke-block .pokemon-type-container .type.metal-type {
+  background: linear-gradient(to bottom, #bdb9b7, #8c8a88);
 }/*# sourceMappingURL=main.css.map */

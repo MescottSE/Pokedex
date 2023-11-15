@@ -24,8 +24,8 @@ import TheWelcome from '../components/TheWelcome.vue'
             <img v-if="index >= 9 && index < 100" :src="`src/assets/pokemonIcons/0${index+1}.png`"/>
             <img v-if="index >= 99" :src="`src/assets/pokemonIcons/${index+1}.png`"/>
             <h3 class="poke-name">{{ pokemon.name}}</h3>
-            <div class="pokemon-type-container" style="display: flex; justify-content: space-between;">
-              <p v-for="(type, typeIndex) in pokemon.type" :key="typeIndex">{{ pokemon.type[typeIndex] }}</p>
+            <div class="pokemon-type-container">
+              <p v-for="(type, typeIndex) in pokemon.type" :key="typeIndex" :class="'type ' +[pokemon.type[typeIndex] + '-type']">{{ pokemon.type[typeIndex] }}</p>
             </div>
           </div>
         </div>
