@@ -5,18 +5,18 @@ import TheWelcome from '../components/TheWelcome.vue'
 <template>
   <main class="section poke-menu-component">
     <div class="container">
-      <!-- <div class="row">
+      <div class="row">
         <div class="col-lg-12">
           <div class="pokemon-filters">
             <div class="filter">
               <div class="filter-button">Type Filter</div>
               <ul>
-                <li></li>
+                <li v-for="index in 10" :key="index">type {{ index }}</li>
               </ul>
             </div>
           </div>
         </div>
-      </div> -->
+      </div>
       <div class="row">
         <div class="col-lg-3" v-for="(pokemon,index) in pokemonList" :key="index" @click="deletePoke($event)">
           <div class="poke-block">
