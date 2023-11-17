@@ -8,10 +8,13 @@ import TheWelcome from '../components/TheWelcome.vue'
       <div class="row">
         <div class="col-lg-12">
           <div class="pokemon-filters">
-            <div class="filter">
-              <div class="filter-button">Type Filter</div>
-              <ul>
-                <li v-for="index in 10" :key="index">type {{ index }}</li>
+            <div id="type-filter" class="filter">
+              <div v-on:click="toggler" id="type-button" class="filter-button">
+                <li class="all-type" @click="typeFilter($event)">All Types</li>
+              </div>
+              <ul id="type-filter-menu">
+                <li class="all-type">All Types</li>
+                <li v-for="(type,index) in pokemonTypes" :key="index" :class="[type.toLowerCase()] + '-type'" @click="typeFilter($event)">{{ type }}</li>
               </ul>
             </div>
           </div>
@@ -38,14 +41,35 @@ import TheWelcome from '../components/TheWelcome.vue'
   export default {
     data() {
       return {
-        pokemonList: [
-          
-        ]
+        pokemonList: [],
+        pokemonTypes: ["Normal","Fire","Water","Electric","Grass","Ice","Fighting","Poison","Ground","Flying","Psychic",
+                       "Bug","Rock","Ghost","Dragon","Dark","Steel","Fairy"],
       };
     },
     methods: {
       deletePoke(element){
         // element.currentTarget.innerHTML = "";
+      },
+
+      typeFilter(event){
+        let selected = event.currentTarget;
+        let filterButton = document.getElementById('type-button');
+        let filterDropdown = document.getElementById('type-filter-menu');
+
+        filterButton.innerHTML = '<li class="' + selected.innerHTML.toLowerCase() +'-type">' + selected.innerHTML + '</li>';
+        
+        filterDropdown.classList.toggle("toggler");
+
+      },
+
+      toggler(event){
+        let element = event.currentTarget;
+        let targetSibling = element.nextElementSibling;
+        let delay = 500;
+
+        console.log(targetSibling.style.maxHeight);
+        
+        targetSibling.classList.toggle("toggler")
       },
 
       async getPokemonData(url) {

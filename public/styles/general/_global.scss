@@ -6,3 +6,8 @@ body{
 .section{
     margin-block: 50px;
 }
+
+.toggler{
+    // max-height: fit-content;
+    transition: ease-in-out 0.5s;
+}
