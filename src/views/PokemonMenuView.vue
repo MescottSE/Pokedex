@@ -13,7 +13,7 @@ import TheWelcome from '../components/TheWelcome.vue'
                 <li class="all-type" @click="typeFilter($event)">All Types</li>
               </div>
               <ul id="type-filter-menu">
-                <li class="all-type">All Types</li>
+                <li class="all-type" @click="typeFilter($event)">All Types</li>
                 <li v-for="(type,index) in pokemonTypes" :key="index" :class="[type.toLowerCase()] + '-type'" @click="typeFilter($event)">{{ type }}</li>
               </ul>
             </div>
