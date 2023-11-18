@@ -139,6 +139,10 @@
                     background-color: white;
                     transition: ease-in-out 0.25s;
 
+                    &:nth-child(odd){
+                        background-color: lightgray;
+                    }
+
                     &:hover{
 
                         &.all-type{

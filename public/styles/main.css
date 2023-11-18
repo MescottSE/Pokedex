@@ -148,6 +148,9 @@ body {
   background-color: white;
   transition: ease-in-out 0.25s;
 }
+.poke-menu-component .pokemon-filters .filter ul li:nth-child(odd) {
+  background-color: lightgray;
+}
 .poke-menu-component .pokemon-filters .filter ul li:hover.all-type {
   background: radial-gradient(circle at center, violet 10%, indigo 20%, blue 30%, green 40%, yellow 50%, orange 60%, red 70%);
 }
