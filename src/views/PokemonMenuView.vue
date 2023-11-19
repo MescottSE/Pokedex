@@ -11,12 +11,14 @@ import TheWelcome from '../components/TheWelcome.vue'
             <div id="type-filter" class="filter">
               <div v-on:click="toggler" id="type-button" class="filter-button">
                 <li class="all-type" @click="typeFilter($event)">All Types</li>
+                <i class="fas fa-chevron-down"></i>
               </div>
               <ul id="type-filter-menu">
                 <li class="all-type" @click="typeFilter($event)">All Types</li>
                 <li v-for="(type,index) in pokemonTypes" :key="index" :class="[type.toLowerCase()] + '-type'" @click="typeFilter($event)">{{ type }}</li>
               </ul>
             </div>
+            <input v-model="pokeSearch" type="text" placeholder="Pokemon name.."/>
           </div>
         </div>
       </div>
@@ -44,6 +46,8 @@ import TheWelcome from '../components/TheWelcome.vue'
         pokemonList: [],
         pokemonTypes: ["Normal","Fire","Water","Electric","Grass","Ice","Fighting","Poison","Ground","Flying","Psychic",
                        "Bug","Rock","Ghost","Dragon","Dark","Steel","Fairy"],
+        pokeSearch: '',
+        pokeType: '',
       };
     },
     methods: {
@@ -51,31 +55,48 @@ import TheWelcome from '../components/TheWelcome.vue'
         // element.currentTarget.innerHTML = "";
       },
 
+      searchName(){
+        console.log(this.pokeSearch);
+        console.log(this.pokeType);
+
+        let pokemonColumns = document.querySelectorAll('.poke-column');
+
+        pokemonColumns.forEach(element => {
+            let pokeType = element.querySelector("." + this.pokeType + "-type");
+            let pokeName = element.querySelector(".poke-name").innerText;
+            
+            if((pokeType || this.pokeType.toLowerCase() == "" || this.pokeType == "all types") && pokeName.toLowerCase().includes(this.pokeSearch.toLowerCase())){
+              element.style.display = "block";
+            }else{
+              element.style.display = "none";
+            }
+        });
+      },
+
       typeFilter(event){
         let selected = event.currentTarget;
         let filterButton = document.getElementById('type-button');
         let filterDropdown = document.getElementById('type-filter-menu');
 
-        filterButton.innerHTML = '<li class="' + selected.innerHTML.toLowerCase() +'-type">' + selected.innerHTML + '</li>';
+        filterButton.innerHTML = '<li class="' + selected.innerHTML.toLowerCase() +'-type">' + selected.innerHTML + '</li>' + '<i class="fas fa-chevron-down"></i>';
         
         filterDropdown.classList.toggle("toggler");
 
+        this.pokeType = selected.innerText.toLowerCase();
         this.hideShowPokemon(selected.innerText.toLowerCase());
       },
 
       hideShowPokemon(typePoke){
         let pokemonColumns = document.querySelectorAll('.poke-column');
-
         
         if(typePoke === "all types"){
           pokemonColumns.forEach(element => {
+            
             element.style.display = "block";
           });
         }else{
           pokemonColumns.forEach(element => {
             let pokeType = element.querySelector("." + typePoke + "-type");
-            
-            console.log(pokeType);
             
             if(pokeType){
               element.style.display = "block";
@@ -90,8 +111,12 @@ import TheWelcome from '../components/TheWelcome.vue'
       toggler(event){
         let element = event.currentTarget;
         let targetSibling = element.nextElementSibling;
+        let arrowElement = element.querySelector('i');
         let delay = 500;
         
+        arrowElement.classList.toggle("fa-chevron-down");
+        arrowElement.classList.toggle("fa-chevron-up");
+
         targetSibling.classList.toggle("toggler")
       },
 
@@ -123,6 +148,11 @@ import TheWelcome from '../components/TheWelcome.vue'
       }
     }
   },
+    watch: {
+      pokeSearch(input){
+        this.searchName();
+      }
+    },
     mounted(){
       this.pokemonInfo();
     }

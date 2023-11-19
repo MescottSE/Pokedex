@@ -1,19 +1,28 @@
 
 .poke-menu-component{
     .pokemon-filters{
-
+        display: flex;
         margin-block: 55px;
 
         .filter{
             position: relative;
             width: fit-content;
             transition: ease-in-out 0.5;
+            margin-right: 25px;
 
             .filter-button{
+                position: relative;
                 background-color: white;
                 border: 1px solid darkgray;
                 width: 170px;
                 cursor: pointer;
+
+                i{
+                    margin-right: 10px;
+                    position: absolute;
+                    top: calc(50% / 2);
+                    right: 0;
+                }
                 
                 li{
                     padding: 5px 15px;
@@ -94,6 +103,7 @@
                     }
     
                     &.steel-type {
+                        color: black;
                         background: linear-gradient(to bottom, #bdb9b7, #8c8a88);
                     }
                 }
@@ -219,6 +229,7 @@
                         }
         
                         &.steel-type {
+                            color: black;
                             background: linear-gradient(to bottom, #bdb9b7, #8c8a88);
                         }
                     }
@@ -341,7 +352,8 @@
                     background: linear-gradient(to bottom, #705898, #42424a);
                 }
 
-                &.metal-type {
+                &.steel-type {
+                    color: black;
                     background: linear-gradient(to bottom, #bdb9b7, #8c8a88);
                 }
             }
