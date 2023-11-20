@@ -16,7 +16,7 @@ import NavPokeball from './views/widgets/NavPokeball.vue'
                 <RouterLink to="/about">About</RouterLink>
                 <NavPokeball to="/"></NavPokeball>
                 <RouterLink to="/pokemon">Pokemon</RouterLink>
-                <RouterLink to="/pokemon">Battle</RouterLink>
+                <RouterLink to="/battle">Battle</RouterLink>
               </nav>
             </div>
           </div>
