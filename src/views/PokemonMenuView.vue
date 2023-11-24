@@ -1,5 +1,7 @@
 <script setup>
 import TheWelcome from '../components/TheWelcome.vue'
+import { onMounted, inject } from 'vue';
+const GlobalPokemonList = inject('GlobalPokemonList');
 </script>
 
 <template>
@@ -23,6 +25,17 @@ import TheWelcome from '../components/TheWelcome.vue'
         </div>
       </div>
       <div class="row">
+        <!-- <div class="col-lg-3 poke-column" v-for="(pokemon,index) in pokemonList" :key="index">
+          <div class="poke-block">
+            <img v-if="index < 10" :src="`src/assets/pokemonIcons/00${index+1}.png`" />
+            <img v-if="index >= 9 && index < 100" :src="`src/assets/pokemonIcons/0${index+1}.png`"/>
+            <img v-if="index >= 99" :src="`src/assets/pokemonIcons/${index+1}.png`"/>
+            <h3 class="poke-name">{{ pokemon.name}}</h3>
+            <div class="pokemon-type-container">
+              <p v-for="(type, typeIndex) in pokemon.type" :key="typeIndex" :class="'type ' +[pokemon.type[typeIndex] + '-type']">{{ pokemon.type[typeIndex] }}</p>
+            </div>
+          </div>
+        </div> -->
         <div class="col-lg-3 poke-column" v-for="(pokemon,index) in pokemonList" :key="index">
           <div class="poke-block">
             <img v-if="index < 10" :src="`src/assets/pokemonIcons/00${index+1}.png`" />

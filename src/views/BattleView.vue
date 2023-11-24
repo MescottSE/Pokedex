@@ -1,10 +1,14 @@
 <script setup>
   // const screen = document.getElementById();
-
+  import { onMounted, inject } from 'vue';
+  const GlobalPokemonList = inject('GlobalPokemonList');
 </script>
 
 <template>
   <main>
+    <ul>
+      <li v-for="(pokemon,index) in GlobalPokemonList" :key="index">{{ pokemon.name }}</li>
+    </ul>
     <canvas id="battle-screen" width="500" height="500"></canvas>
   </main>
 </template>
@@ -36,7 +40,7 @@
       drawCircle(){
         let canvas = document.getElementById("battle-screen");
         let ctx = canvas.getContext('2d');
-        
+
         const circleX = canvas.width / 2;
         const circleY = canvas.height / 2;
         const radius = 50;
