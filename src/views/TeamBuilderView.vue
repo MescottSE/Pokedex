@@ -1,7 +1,4 @@
-<script setup>
-  import { onMounted, inject } from 'vue';
-  const GlobalPokemonList = inject('GlobalPokemonList');
-</script>
+
 <template>
   <main class="section team-builder-component">
     <div class="team-builder">
@@ -16,6 +13,14 @@
               <img v-if="poke.id > 9 && poke.id < 100" :src="`src/assets/pokemonIcons/0${poke.id}.png`"/>
               <img v-if="poke.id > 99" :src="`src/assets/pokemonIcons/${poke.id}.png`"/>
               <h1 class="poke-name">{{ poke.pokename }}</h1>
+              <ul class="poke-stats">
+                <li class="base-hp-row">
+                  <div class="stat-label">HP</div>
+                  <div class="stat-bar">
+                    <div class="bar" :style="{ width: getBarWidth(poke.baseHp), background: getBarColor(poke.baseHp)}"></div>
+                  </div>
+                  <div class="stat-value">{{poke.baseHp}}</div></li>
+              </ul>
               <div class="poke-options">
                 <i v-on:click="deletePoke(index)" class="fa-solid fa-trash"></i>
               </div>
@@ -23,14 +28,35 @@
           </div>
         </div>
       </div>
-      <!-- <h1>{{GlobalPokemonList[145].name}}</h1> -->
+      <!-- <h1 v-for="(poke, index) in GlobalPokemonList" :key="index">{{ poke.baseHp }}</h1> -->
     </div>
   </main>
 </template>
 
-<style scoped>
-  
-</style>
+<script setup>
+  import { onMounted, inject } from 'vue';
+  const GlobalPokemonList = inject('GlobalPokemonList');
+
+  const getBarWidth = (baseHp) => {
+    return `${(baseHp / 255) * 100}%`;
+  };
+
+  const getBarColor = (baseHp) => {
+    // Define your logic to set the color based on baseHp
+    if (baseHp > 200) {
+      return 'green'; // For example, set to green if HP > 200
+    } else if (baseHp > 150) {
+      return 'yellowgreen'; // Set to yellow if HP > 100
+    } else if (baseHp > 100) {
+      return 'yellow'
+    }else if (baseHp > 50) {
+      return 'orange'
+    } else {
+      return 'red'; // Set to red otherwise
+    }
+  };
+
+</script>
 
 <script>
 
@@ -45,12 +71,27 @@ export default {
   mounted(){
     this.setMyPokes();
   },
-
+  
   methods:{
     setMyPokes(){
       const retrievedTeam = JSON.parse(localStorage.getItem('pokemonTeam')) || [];
-
+      
       this.myPokes = retrievedTeam;
+      this.setBars();
+
+    },
+
+    setBars(){
+
+      let bars = document.querySelectorAll(".stat-bar");
+
+      bars.forEach(function(bar, index){
+
+        let barEle = bar.querySelector(".bar");
+        let barNumber = parseInt(bar.parentElement.querySelector(".stat-value").innerText);
+        barEle.style.width = ((barNumber / 255) * 100) + "%";
+
+      });
     },
 
     deletePoke(index) {
@@ -63,7 +104,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

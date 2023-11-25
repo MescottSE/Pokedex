@@ -326,4 +326,26 @@ body {
 }
 .team-builder-component .my-poke i {
   cursor: pointer;
+}
+.team-builder-component .my-poke .poke-stats {
+  padding: 0;
+  width: 100%;
+}
+.team-builder-component .my-poke .poke-stats li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.team-builder-component .my-poke .poke-stats li .stat-bar {
+  width: 100%;
+  height: 7px;
+  background-color: white;
+  border-radius: 15px;
+  margin-inline: 10px;
+}
+.team-builder-component .my-poke .poke-stats li .stat-bar .bar {
+  height: 100%;
+  width: 50px;
+  background-color: yellow;
+  transition: ease-in-out 0.25s;
 }/*# sourceMappingURL=main.css.map */
