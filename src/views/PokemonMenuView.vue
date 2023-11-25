@@ -22,23 +22,15 @@ const GlobalPokemonList = inject('GlobalPokemonList');
             </div>
             <input v-model="pokeSearch" type="text" placeholder="Pokemon name.."/>
           </div>
+          <div class="instructions">
+            <h4>Click any Pokemon to Add to your Team Builder (Max 25)</h4>
+          </div>
         </div>
       </div>
       <div class="row">
-        <!-- <div class="col-lg-3 poke-column" v-for="(pokemon,index) in pokemonList" :key="index">
-          <div class="poke-block">
-            <img v-if="index < 10" :src="`src/assets/pokemonIcons/00${index+1}.png`" />
-            <img v-if="index >= 9 && index < 100" :src="`src/assets/pokemonIcons/0${index+1}.png`"/>
-            <img v-if="index >= 99" :src="`src/assets/pokemonIcons/${index+1}.png`"/>
-            <h3 class="poke-name">{{ pokemon.name}}</h3>
-            <div class="pokemon-type-container">
-              <p v-for="(type, typeIndex) in pokemon.type" :key="typeIndex" :class="'type ' +[pokemon.type[typeIndex] + '-type']">{{ pokemon.type[typeIndex] }}</p>
-            </div>
-          </div>
-        </div> -->
         <div class="col-lg-3 poke-column" v-for="(pokemon,index) in pokemonList" :key="index">
-          <div class="poke-block">
-            <img v-if="index < 10" :src="`src/assets/pokemonIcons/00${index+1}.png`" />
+          <div class="poke-block" v-on:click="addToTeam(index+1, pokemon.name)">
+            <img v-if="index < 9" :src="`src/assets/pokemonIcons/00${index+1}.png`" />
             <img v-if="index >= 9 && index < 100" :src="`src/assets/pokemonIcons/0${index+1}.png`"/>
             <img v-if="index >= 99" :src="`src/assets/pokemonIcons/${index+1}.png`"/>
             <h3 class="poke-name">{{ pokemon.name}}</h3>
@@ -64,8 +56,28 @@ const GlobalPokemonList = inject('GlobalPokemonList');
       };
     },
     methods: {
-      deletePoke(element){
-        // element.currentTarget.innerHTML = "";
+
+      addToTeam(index, name) {
+        // Retrieve team from local storage
+        const retrievedTeam = JSON.parse(localStorage.getItem('pokemonTeam')) || [];
+        
+        if(retrievedTeam.length < 25){
+          
+          // Load the existing team or initialize a new one
+          // const pokemonTeam = [...retrievedTeam];
+          const pokemonTeam = [...retrievedTeam];
+  
+          let indexX = parseInt(index);
+  
+          // Push the selected Pokémon into the team
+          pokemonTeam.push({id: index, pokename: name});
+  
+          // Save the updated team to local storage
+          localStorage.setItem('pokemonTeam', JSON.stringify(pokemonTeam));
+          alert(name + " added to Box");
+        }else{
+          alert("Poke Box Full!");
+        }
       },
 
       searchName(){

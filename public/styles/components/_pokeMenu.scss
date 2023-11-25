@@ -1,8 +1,18 @@
 
 .poke-menu-component{
+    
+    .instructions{
+        margin-block: 15px;
+
+        h4{
+
+        }
+    }
+
     .pokemon-filters{
         display: flex;
         margin-block: 55px;
+
 
         .filter{
             position: relative;

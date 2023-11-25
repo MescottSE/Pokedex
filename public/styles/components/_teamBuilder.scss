@@ -1,0 +1,16 @@
+
+.team-builder-component{
+    .my-poke{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius:10px;
+        background: radial-gradient(circle, #C0C0C0, #808080);
+        padding: 20px;
+        margin-bottom: 20px;
+        
+        i{
+          cursor:pointer;
+        }
+    }
+}
