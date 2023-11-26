@@ -29,7 +29,7 @@ const GlobalPokemonList = inject('GlobalPokemonList');
       </div>
       <div class="row">
         <div class=" col-md-4 col-lg-3 poke-column" v-for="(pokemon,index) in GlobalPokemonList" :key="index">
-          <div class="poke-block" v-on:click="addToTeam(index+1, pokemon.name, pokemon.baseHp)">
+          <div class="poke-block" v-on:click="addToTeam(index+1, pokemon.name, pokemon.baseHp, pokemon.baseSpd, pokemon.baseAtk, pokemon.baseDef, pokemon.baseSAtk, pokemon.baseSDef)">
             <img v-if="index < 9" :src="`src/assets/pokemonIcons/00${index+1}.png`" />
             <img v-if="index >= 9 && index < 100" :src="`src/assets/pokemonIcons/0${index+1}.png`"/>
             <img v-if="index >= 99" :src="`src/assets/pokemonIcons/${index+1}.png`"/>
@@ -57,9 +57,11 @@ const GlobalPokemonList = inject('GlobalPokemonList');
     },
     methods: {
 
-      addToTeam(index, name, hp) {
+      addToTeam(index, name, hp, speed, attack, defense, sAttack, sDefence) {
         // Retrieve team from local storage
+
         const retrievedTeam = JSON.parse(localStorage.getItem('pokemonTeam')) || [];
+
         
         if(retrievedTeam.length < 25){
           
@@ -67,7 +69,16 @@ const GlobalPokemonList = inject('GlobalPokemonList');
           const pokemonTeam = [...retrievedTeam];
   
           // Push the selected Pokémon into the team
-          pokemonTeam.push({id: index, pokename: name, baseHp: hp});
+          pokemonTeam.push({
+            id: index, 
+            pokename: name, 
+            baseHp: hp,
+            baseSpd: speed,
+            baseAtk: attack,
+            baseDef: defense,
+            baseSAtk: sAttack,
+            baseSDef: sDefence
+          });
   
           // Save the updated team to local storage
           localStorage.setItem('pokemonTeam', JSON.stringify(pokemonTeam));

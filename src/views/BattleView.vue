@@ -6,9 +6,6 @@
 
 <template>
   <main>
-    <ul>
-      <li v-for="(pokemon,index) in GlobalPokemonList" :key="index">{{ pokemon.name }} - {{ pokemon.baseHp }}</li>
-    </ul>
     <canvas id="battle-screen" width="500" height="500"></canvas>
   </main>
 </template>

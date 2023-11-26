@@ -19,7 +19,43 @@
                   <div class="stat-bar">
                     <div class="bar" :style="{ width: getBarWidth(poke.baseHp), background: getBarColor(poke.baseHp)}"></div>
                   </div>
-                  <div class="stat-value">{{poke.baseHp}}</div></li>
+                  <div class="stat-value">{{poke.baseHp}}</div>
+                </li>
+                <li class="base-speed-row">
+                  <div class="stat-label">Spd</div>
+                  <div class="stat-bar">
+                    <div class="bar" :style="{ width: getBarWidth(poke.baseSpd), background: getBarColor(poke.baseSpd)}"></div>
+                  </div>
+                  <div class="stat-value">{{poke.baseSpd}}</div>
+                </li>
+                <li class="base-attack-row">
+                  <div class="stat-label">Atk</div>
+                  <div class="stat-bar">
+                    <div class="bar" :style="{ width: getBarWidth(poke.baseAtk), background: getBarColor(poke.baseAtk)}"></div>
+                  </div>
+                  <div class="stat-value">{{poke.baseAtk}}</div>
+                </li>
+                <li class="base-defense-row">
+                  <div class="stat-label">Def</div>
+                  <div class="stat-bar">
+                    <div class="bar" :style="{ width: getBarWidth(poke.baseDef), background: getBarColor(poke.baseDef)}"></div>
+                  </div>
+                  <div class="stat-value">{{poke.baseDef}}</div>
+                </li>
+                <li class="base-sAttack-row">
+                  <div class="stat-label">sAtk</div>
+                  <div class="stat-bar">
+                    <div class="bar" :style="{ width: getBarWidth(poke.baseSAtk), background: getBarColor(poke.baseSAtk)}"></div>
+                  </div>
+                  <div class="stat-value">{{poke.baseSAtk}}</div>
+                </li>
+                <li class="base-sDefense-row">
+                  <div class="stat-label">sDef</div>
+                  <div class="stat-bar">
+                    <div class="bar" :style="{ width: getBarWidth(poke.baseSDef), background: getBarColor(poke.baseSDef)}"></div>
+                  </div>
+                  <div class="stat-value">{{poke.baseSDef}}</div>
+                </li>
               </ul>
               <div class="poke-options">
                 <i v-on:click="deletePoke(index)" class="fa-solid fa-trash"></i>
@@ -37,19 +73,19 @@
   import { onMounted, inject } from 'vue';
   const GlobalPokemonList = inject('GlobalPokemonList');
 
-  const getBarWidth = (baseHp) => {
-    return `${(baseHp / 255) * 100}%`;
+  const getBarWidth = (barValue) => {
+    return `${(barValue / 255) * 100}%`;
   };
 
-  const getBarColor = (baseHp) => {
+  const getBarColor = (barValue) => {
     // Define your logic to set the color based on baseHp
-    if (baseHp > 200) {
+    if (barValue > 200) {
       return 'green'; // For example, set to green if HP > 200
-    } else if (baseHp > 150) {
+    } else if (barValue > 125) {
       return 'yellowgreen'; // Set to yellow if HP > 100
-    } else if (baseHp > 100) {
+    } else if (barValue > 100) {
       return 'yellow'
-    }else if (baseHp > 50) {
+    }else if (barValue > 50) {
       return 'orange'
     } else {
       return 'red'; // Set to red otherwise

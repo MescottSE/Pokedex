@@ -23,11 +23,21 @@ async function fetchPokemonData() {
       const pokemonDetails = await fetch(pokemon.url);
       const details = await pokemonDetails.json();
       const baseHP = details.stats.find(stat => stat.stat.name === 'hp').base_stat;
+      const baseSpeed = details.stats.find(stat => stat.stat.name === 'speed').base_stat;
+      const baseAttack = details.stats.find(stat => stat.stat.name === 'attack').base_stat;
+      const baseDefense = details.stats.find(stat => stat.stat.name === 'defense').base_stat;
+      const baseSAttack = details.stats.find(stat => stat.stat.name === 'special-attack').base_stat;
+      const baseSDefence = details.stats.find(stat => stat.stat.name === 'special-defense').base_stat;
 
       pokemonList.push({
         name: pokemon.name,
         types: details.types.map(type => type.type.name),
-        baseHp: baseHP
+        baseHp: baseHP,
+        baseSpd: baseSpeed,
+        baseAtk: baseAttack,
+        baseDef: baseDefense,
+        baseSAtk: baseSAttack,
+        baseSDef: baseSDefence,
       });
     }
 
