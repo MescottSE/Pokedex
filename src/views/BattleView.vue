@@ -1,76 +1,74 @@
 <script setup>
-  // const screen = document.getElementById();
-  import { onMounted, inject } from 'vue';
-  const GlobalPokemonList = inject('GlobalPokemonList');
+  import { onMounted } from 'vue';
 </script>
 
 <template>
   <main>
-    <canvas id="battle-screen" width="500" height="500"></canvas>
+    <canvas id="battle-screen" ref="battleScreen" width="500" height="500"></canvas>
   </main>
 </template>
 
 <style scoped>
-  #battle-screen{
+  #battle-screen {
     display: block;
     background-color: black;
   }
 </style>
 
 <script>
-  import { onMounted } from 'vue';
-  
+  import dawnImage from '@/assets/playerImage/dawn.png';
+  import gameBackground from '@/assets/maps/AZIXfinal.png';
+
   export default {
-    data (){
+    data() {
       return {
-        
+        blockDimension: 40 // Adjust the player image size here
       };
-    },
-    methods:{
-      initiateCanvas(){
-        let canvas = document.getElementById("battle-screen");
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight -100;
-      },
-
-      drawCircle(){
-        let canvas = document.getElementById("battle-screen");
-        let ctx = canvas.getContext('2d');
-
-        const circleX = canvas.width / 2;
-        const circleY = canvas.height / 2;
-        const radius = 50;
-        const lineWidth = 2;
-        const strokeColor = 'blue';
-        const fillColor = 'lightblue';
-
-        // Draw circle
-        ctx.beginPath();
-        ctx.arc(circleX, circleY, radius, 0, Math.PI * 2);
-        ctx.lineWidth = lineWidth;
-        ctx.strokeStyle = strokeColor;
-        ctx.stroke();
-        ctx.fillStyle = fillColor;
-        ctx.fill();
-      },
-
-      render(){
-        this.drawCircle();
-      },
-
-      gameLoop(){
-        this.render();
-      }
-
     },
 
     mounted() {
-      //Mounted is a hook that happens when the component is loaded in
       this.initiateCanvas();
-
+      this.initializeMap();
+      this.initializePlayer();
       window.addEventListener("resize", this.initiateCanvas);
       requestAnimationFrame(this.gameLoop);
+    },
+
+    methods: {
+      initiateCanvas() {
+        const canvas = this.$refs.battleScreen;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight - 100;
+      },
+
+      initializePlayer() {
+        const playerImage = new Image();
+        playerImage.src = dawnImage;
+
+        playerImage.onload = () => {
+          const canvas = this.$refs.battleScreen;
+          const ctx = canvas.getContext('2d');
+          const x = (canvas.width - this.blockDimension) / 2; // Calculate x-coordinate for centering
+          const y = (canvas.height - this.blockDimension) / 2; // Calculate y-coordinate for centering
+          ctx.drawImage(playerImage, x, y, this.blockDimension, this.blockDimension);
+        };
+      },
+
+      initializeMap(){
+        const mapImage = new Image();
+        mapImage.src = gameBackground;
+
+        mapImage.onload = () => {
+          const canvas = this.$refs.battleScreen;
+          const ctx = canvas.getContext('2d');
+
+          ctx.drawImage(mapImage, 0,0, 1000, 1000);
+        };
+      },
+
+      gameLoop() {
+        // Add your game logic here
+      }
     }
   }
 </script>
