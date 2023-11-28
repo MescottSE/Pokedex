@@ -35,6 +35,14 @@ body {
   transform: translateY(25px);
 }
 
+.poke-home-component {
+  background: radial-gradient(circle, #4fc1e9, #4a90e2);
+  min-height: 100vh;
+}
+.poke-home-component .poke-map {
+  background-color: black;
+}
+
 .poke-menu-component .instructions {
   margin-block: 15px;
 }
