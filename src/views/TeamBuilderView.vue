@@ -56,6 +56,20 @@
                   </div>
                   <div class="stat-value">{{poke.baseSDef}}</div>
                 </li>
+                <li class="level-row">
+                  <div class="stat-label">Lvl</div>
+                  <div class="stat-bar">
+                    <div class="bar" :style="{ width: getBarWidth(poke.level), background: getBarColor(poke.level)}"></div>
+                  </div>
+                  <div class="stat-value">{{poke.level}}</div>
+                </li>
+                <li class="experience-row">
+                  <div class="stat-label">Exp.</div>
+                  <div class="stat-bar">
+                    <div class="bar" :style="{ width: getBarWidth(poke.exp), background: getBarColor(poke.exp)}"></div>
+                  </div>
+                  <div class="stat-value">{{poke.exp}}</div>
+                </li>
               </ul>
               <div class="poke-options">
                 <i v-on:click="deletePoke(index)" class="fa-solid fa-trash"></i>

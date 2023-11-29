@@ -77,7 +77,9 @@ const GlobalPokemonList = inject('GlobalPokemonList');
             baseAtk: attack,
             baseDef: defense,
             baseSAtk: sAttack,
-            baseSDef: sDefence
+            baseSDef: sDefence,
+            level: 1,
+            exp: 0,
           });
   
           // Save the updated team to local storage
