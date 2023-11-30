@@ -4,7 +4,7 @@
 
 <template>
   <main>
-    <canvas id="battle-screen" ref="battleScreen" width="500" height="500"></canvas>
+    <!-- <canvas id="battle-screen" ref="battleScreen" width="500" height="500"></canvas> -->
   </main>
 </template>
 
